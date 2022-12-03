@@ -1,10 +1,6 @@
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
-
 fn main() {
     // File hosts must exist in current path before this produces output
-    if let Ok(lines) = read_lines("resources/input.txt") {
+    if let Ok(lines) = aoc::read_lines("resources/input.txt") {
         let mut vec = Vec::new();
         vec.push(0);
 
@@ -21,15 +17,7 @@ fn main() {
         }
 
         vec.sort_by(|a, b| b.cmp(a));
-        println!("highest calory: {}", vec[0]);
-        println!("top-3 calories: {}", vec[0] + vec[1] + vec[2]);
+        println!("day1, part1 - highest calory: {}", vec[0]);
+        println!("day1, part2 - top-3 calories: {}", vec[0] + vec[1] + vec[2]);
     }
-}
-
-// The output is wrapped in a Result to allow matching on errors
-// Returns an Iterator to the Reader of the lines of the file.
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where P: AsRef<Path>, {
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
 }
