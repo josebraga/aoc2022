@@ -60,9 +60,9 @@ fn main() {
         let mut sum_part1: i32 = 0;
         let mut sum_part2: i32 = 0;
         // Consumes the iterator, returns an (Optional) &str
-        for line in lines {
-            if let Ok(ip) = line {
-                let v: Vec<&str> = ip.split(' ').collect();
+        for rline in lines {
+            if let Ok(line) = rline {
+                let v: Vec<&str> = line.split(' ').collect();
                 let s = &fix_strategy(v[0], v[1]);
                 sum_part2 += map_me.get(s.as_str()).unwrap() + fight(v[0], s);
                 sum_part1 += map_me.get(v[1]).unwrap() + fight(v[0], v[1]);
