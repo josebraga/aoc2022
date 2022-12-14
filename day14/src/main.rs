@@ -161,5 +161,4 @@ fn main() {
     let mut grid = build_grid(&mut structure, limits, true);
     count = calc(&mut grid, limits, true);
     println!("day14, part2: {}", count);
-
 }
